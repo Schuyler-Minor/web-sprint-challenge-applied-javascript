@@ -23,8 +23,7 @@ const Card = (article) => {
     author.appendChild(imgContainer)
     imgContainer.appendChild(authorImg)
     author.appendChild(authorName)
-
-
+    
 
     return cardWrapper;
 
@@ -56,6 +55,35 @@ const cardAppender = (selector) => {
   axios.get(`http://localhost:5000/api/articles`)
     .then((res) => {
       console.log(res.data)
+
+      let javascript = res.data.articles.javascript
+      let bootstrap = res.data.articles.bootstrap
+      let technology = res.data.articles.technology
+      let jquery = res.data.articles.jquery
+      let node = res.data.articles.node
+
+      
+
+      javascript.forEach((article) => {
+        document.querySelector(selector).appendChild(Card(article))
+      })
+
+      bootstrap.forEach((article) => {
+        document.querySelector(selector).appendChild(Card(article))
+      })
+
+      technology.forEach((article) => {
+        document.querySelector(selector).appendChild(Card(article))
+      })
+
+      jquery.forEach((article) => {
+        document.querySelector(selector).appendChild(Card(article))
+      })
+
+      node.forEach((article) => {
+        document.querySelector(selector).appendChild(Card(article))
+      })
+
     }) .catch((err) => {
       console.log(error)
     })
